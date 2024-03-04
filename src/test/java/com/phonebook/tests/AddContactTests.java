@@ -52,7 +52,7 @@ public class AddContactTests extends TestBase {
         Assert.assertTrue(app.getContact().isContactCreatedByText(name));
     }
 
-    @Test(dataProvider = "addContactFromCSV",dataProviderClass = DataProviders.class)
+    @Test()
     public void addContactPositiveTest() {
         app.getContact().clickOnAddLink();
         app.getContact().fillContactForm(new Contact()
@@ -64,5 +64,14 @@ public class AddContactTests extends TestBase {
                 .setDescription("goalkeeper"));
         app.getContact().clickOnSaveButton();
         Assert.assertTrue(app.getContact().isContactCreatedByText("Adam"));
+    }
+
+    @Test(dataProvider = "addContactFromCSV",dataProviderClass = DataProviders.class)
+    public void addContactPositiveTestFromDataProviderWithFile(Contact contact){
+
+        app.getContact().clickOnAddLink();
+        app.getContact().fillContactForm(contact);
+        app.getContact().clickOnSaveButton();
+        Assert.assertTrue(app.getContact().isContactCreatedByText(contact.getName()));
     }
 }
