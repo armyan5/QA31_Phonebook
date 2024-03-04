@@ -26,7 +26,6 @@ public class ApplicationManager {
             driver = new FirefoxDriver();
         } else if (browser.equalsIgnoreCase("edge")) {
             driver = new EdgeDriver();
-
         }
 
         driver.get("https://telranedu.web.app");
